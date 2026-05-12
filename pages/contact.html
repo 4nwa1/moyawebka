@@ -1,0 +1,12 @@
+<h1>Контакты</h1>
+<form id="contactForm">
+    <input type="text" placeholder="Ваше имя" id="name">
+    <button type="submit">Отправить</button>
+</form>
+<a href="../index.html">Главная</a>
+<script>
+    document.getElementById("contactForm")?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Форма отправлена (учебный пример)");
+    });
+</script>
