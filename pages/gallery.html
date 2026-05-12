@@ -13,20 +13,15 @@
         <a href="../pages/contact.html">Контакты</a> |
         <a href="../pages/gallery.html">Галерея</a>
     </nav>
-
     <h1>Галерея изображений</h1>
-    
     <div style="text-align: center;">
-        <img id="galleryImage" src="https://picsum.photos/400/300?random=1" alt="Изображение" style="width: 400px; height: 300px; border: 2px solid #ccc;">
+        <img id="galleryImage" src="https://picsum.photos/400/300?random=1" style="width: 400px; height: 300px; border: 2px solid #ccc;">
         <br><br>
-        <button id="prevBtn" style="padding: 10px 20px; margin: 5px;">◀ Назад</button>
-        <button id="nextBtn" style="padding: 10px 20px; margin: 5px;">Вперед ▶</button>
+        <button id="prevBtn" style="padding: 10px 20px;">◀ Назад</button>
+        <button id="nextBtn" style="padding: 10px 20px;">Вперед ▶</button>
     </div>
-
     <footer>Подвал сайта</footer>
-
     <script>
-        // Массив ссылок на изображения
         const images = [
             "https://picsum.photos/400/300?random=1",
             "https://picsum.photos/400/300?random=2",
@@ -34,31 +29,16 @@
             "https://picsum.photos/400/300?random=4",
             "https://picsum.photos/400/300?random=5"
         ];
-        
         let currentIndex = 0;
         const imgElement = document.getElementById("galleryImage");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        
-        // Функция обновления изображения
-        function updateImage() {
-            imgElement.src = images[currentIndex];
-        }
-        
-        // Кнопка "Назад"
-        prevBtn.addEventListener("click", function() {
+        document.getElementById("prevBtn").onclick = () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateImage();
-        });
-        
-        // Кнопка "Вперед"
-        nextBtn.addEventListener("click", function() {
+            imgElement.src = images[currentIndex];
+        };
+        document.getElementById("nextBtn").onclick = () => {
             currentIndex = (currentIndex + 1) % images.length;
-            updateImage();
-        });
-        
-        // Показываем первое изображение
-        updateImage();
+            imgElement.src = images[currentIndex];
+        };
     </script>
 </body>
 </html>
