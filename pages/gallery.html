@@ -1,26 +1,64 @@
-<h1>Галерея</h1>
-<div>
-    <img id="galleryImg" src="" width="300" height="200" style="border:1px solid #ccc">
-    <br>
-    <button id="prevBtn">◀ Назад</button>
-    <button id="nextBtn">Вперед ▶</button>
-</div>
-<a href="../index.html">Главная</a>
-<script>
-    const images = [
-        "https://via.placeholder.com/300x200?text=Image+1",
-        "https://via.placeholder.com/300x200?text=Image+2",
-        "https://via.placeholder.com/300x200?text=Image+3"
-    ];
-    let currentIndex = 0;
-    const imgElement = document.getElementById("galleryImg");
-    imgElement.src = images[currentIndex];
-    document.getElementById("prevBtn").onclick = () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        imgElement.src = images[currentIndex];
-    };
-    document.getElementById("nextBtn").onclick = () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        imgElement.src = images[currentIndex];
-    };
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+</head>
+<body>
+    <header>Мой сайт - Галерея</header>
+    <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../pages/about.html">О нас</a> |
+        <a href="../pages/contact.html">Контакты</a> |
+        <a href="../pages/gallery.html">Галерея</a>
+    </nav>
+
+    <h1>Галерея изображений</h1>
+    
+    <div style="text-align: center;">
+        <img id="galleryImage" src="https://picsum.photos/400/300?random=1" alt="Изображение" style="width: 400px; height: 300px; border: 2px solid #ccc;">
+        <br><br>
+        <button id="prevBtn" style="padding: 10px 20px; margin: 5px;">◀ Назад</button>
+        <button id="nextBtn" style="padding: 10px 20px; margin: 5px;">Вперед ▶</button>
+    </div>
+
+    <footer>Подвал сайта</footer>
+
+    <script>
+        // Массив ссылок на изображения
+        const images = [
+            "https://picsum.photos/400/300?random=1",
+            "https://picsum.photos/400/300?random=2",
+            "https://picsum.photos/400/300?random=3",
+            "https://picsum.photos/400/300?random=4",
+            "https://picsum.photos/400/300?random=5"
+        ];
+        
+        let currentIndex = 0;
+        const imgElement = document.getElementById("galleryImage");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        
+        // Функция обновления изображения
+        function updateImage() {
+            imgElement.src = images[currentIndex];
+        }
+        
+        // Кнопка "Назад"
+        prevBtn.addEventListener("click", function() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        });
+        
+        // Кнопка "Вперед"
+        nextBtn.addEventListener("click", function() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        });
+        
+        // Показываем первое изображение
+        updateImage();
+    </script>
+</body>
+</html>
